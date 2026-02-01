@@ -1,1 +1,5 @@
-balls
+# Diet App Grocery Planner
+
+This prototype adds a grocery recommendations service layer and a shopping cart UI. Adjust nutrient and budget weights to see items grouped by store, highlighted deals, and a running cart summary.
+
+Open `index.html` in a browser to explore the experience.

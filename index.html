@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diet App Grocery Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <p class="eyebrow">Diet App • Grocery Planner</p>
+        <h1>Build a nutrient-smart grocery cart within your budget.</h1>
+        <p class="subtitle">
+          Pull recommendations from multiple grocery partners, keep deals in sight,
+          and curate a cart that matches your nutrition targets.
+        </p>
+      </header>
+
+      <section class="controls">
+        <div>
+          <h2>Nutrition goals</h2>
+          <p class="muted">
+            Adjust weights to prioritize high-protein, high-fiber, and low-calorie items.
+          </p>
+          <div class="sliders">
+            <label>
+              Protein priority
+              <input type="range" id="proteinWeight" min="0" max="3" step="0.5" value="1.5" />
+              <span id="proteinWeightValue">1.5x</span>
+            </label>
+            <label>
+              Fiber priority
+              <input type="range" id="fiberWeight" min="0" max="3" step="0.5" value="1" />
+              <span id="fiberWeightValue">1.0x</span>
+            </label>
+            <label>
+              Calorie sensitivity
+              <input type="range" id="calorieWeight" min="0" max="0.5" step="0.05" value="0.2" />
+              <span id="calorieWeightValue">0.2x</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <h2>Budget &amp; limits</h2>
+          <p class="muted">Cap item price and control how many picks to show per store.</p>
+          <div class="sliders">
+            <label>
+              Max price per item ($)
+              <input type="range" id="maxPrice" min="2" max="15" step="0.5" value="8" />
+              <span id="maxPriceValue">$8.00</span>
+            </label>
+            <label>
+              Items per store
+              <input type="range" id="maxItemsPerStore" min="1" max="5" step="1" value="3" />
+              <span id="maxItemsPerStoreValue">3</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <main class="layout">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Recommended items by store</h2>
+            <p class="muted">Deals are highlighted and sorted by nutrition fit.</p>
+          </div>
+          <div id="recommendations"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Your cart</h2>
+            <p class="muted">Add or remove items to shape your ideal basket.</p>
+          </div>
+          <div id="cart"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
