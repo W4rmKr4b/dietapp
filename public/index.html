@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diet App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Weekly Nutrition Planner</h1>
+        <p>Share your nutrient gaps and weekly goals to get smart food suggestions.</p>
+      </header>
+
+      <section class="card">
+        <h2>Weekly Inputs</h2>
+        <form id="planner-form" class="form">
+          <label>
+            Nutrient deficits (comma separated)
+            <input
+              type="text"
+              id="deficits"
+              placeholder="Protein, Fiber, Iron"
+              required
+            />
+          </label>
+          <label>
+            Goal text
+            <textarea
+              id="goal"
+              placeholder="Build lean muscle and boost energy"
+              required
+            ></textarea>
+          </label>
+          <button type="submit" class="primary">Get Suggestions</button>
+        </form>
+      </section>
+
+      <section class="card" id="suggestions">
+        <div class="card__header">
+          <h2>Next Week Suggestions</h2>
+          <span id="status" class="status">Waiting for inputs</span>
+        </div>
+        <ul id="suggestion-list" class="suggestion-list"></ul>
+      </section>
+
+      <section class="card" id="cart">
+        <h2>Cart Preview</h2>
+        <ul id="cart-list" class="cart-list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
