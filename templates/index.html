@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Nutrition Reports</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <div>
+          <h1>Weekly nutrition summary</h1>
+          <p>
+            Aggregate the last 7 days of intake, compare to targets, and capture actionable
+            next steps. Historical reports remain available below.
+          </p>
+        </div>
+        <button id="generate-report">Generate weekly report</button>
+      </section>
+
+      <section class="card" id="latest-report">
+        <h2>Latest report</h2>
+        <div id="latest-report-content" class="muted">Generate a report to see insights.</div>
+      </section>
+
+      <section class="card">
+        <h2>Historical reports</h2>
+        <div id="report-list" class="report-list"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
