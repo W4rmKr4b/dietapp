@@ -1,0 +1,24 @@
+{
+  "name": "dietapp",
+  "version": "0.1.0",
+  "description": "Diet tracking backend scaffold",
+  "main": "src/server.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.20.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}

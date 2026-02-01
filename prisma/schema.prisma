@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+}
+
+model User {
+  id        String      @id @default(cuid())
+  email     String      @unique
+  name      String?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  mealEntries MealEntry[]
+  goals     Goal[]
+}
+
+model MealEntry {
+  id         String              @id @default(cuid())
+  userId     String
+  mealType   MealType
+  loggedAt   DateTime
+  notes      String?
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+
+  user       User                @relation(fields: [userId], references: [id])
+  items      MealEntryFoodItem[]
+}
+
+model FoodItem {
+  id          String              @id @default(cuid())
+  name        String
+  brand       String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  nutrientProfile NutrientProfile?
+  mealEntries     MealEntryFoodItem[]
+}
+
+model NutrientProfile {
+  id            String   @id @default(cuid())
+  foodItemId    String   @unique
+  calories      Float?
+  proteinGrams  Float?
+  carbsGrams    Float?
+  fatGrams      Float?
+  fiberGrams    Float?
+  sugarGrams    Float?
+  sodiumMg      Float?
+  potassiumMg   Float?
+  cholesterolMg Float?
+  vitaminAMcg   Float?
+  vitaminCMg    Float?
+  calciumMg     Float?
+  ironMg        Float?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  foodItem      FoodItem @relation(fields: [foodItemId], references: [id])
+}
+
+model MealEntryFoodItem {
+  mealEntryId String
+  foodItemId  String
+  servingSize Float
+  servingUnit String?
+  createdAt   DateTime @default(now())
+
+  mealEntry   MealEntry @relation(fields: [mealEntryId], references: [id])
+  foodItem    FoodItem  @relation(fields: [foodItemId], references: [id])
+
+  @@id([mealEntryId, foodItemId])
+}
+
+model Goal {
+  id             String   @id @default(cuid())
+  userId         String
+  description    String
+  targetCalories Float?
+  targetProtein  Float?
+  targetCarbs    Float?
+  targetFat      Float?
+  targetFiber    Float?
+  targetSodium   Float?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user           User     @relation(fields: [userId], references: [id])
+}
