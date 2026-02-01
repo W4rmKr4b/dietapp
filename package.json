@@ -1,0 +1,10 @@
+{
+  "name": "dietapp",
+  "version": "1.0.0",
+  "description": "Diet app with GPT-powered next week suggestions",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
